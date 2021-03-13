@@ -1,0 +1,18 @@
+http:
+
+  services:
+
+    widle-service:
+      loadBalancer:
+        servers:
+        - url: "http://192.168.70.169/"
+
+  routers:
+
+    widle-router:
+      service: widle-service
+      rule: Host(`192-168-70-158.nip.io`)
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: acmeresolver
