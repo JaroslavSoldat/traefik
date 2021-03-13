@@ -1,0 +1,6 @@
+version: '3'
+
+networks:
+  dmz:
+    driver: overlay
+    external: true

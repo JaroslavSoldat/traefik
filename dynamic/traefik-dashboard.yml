@@ -1,0 +1,19 @@
+http:
+  routers:
+
+    dashboard:
+      service: api@internal
+      rule: Host(`127-0-0-1.nip.io`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: acmeresolver
+      middlewares:
+        - auth
+
+  middlewares:
+    auth:
+      basicAuth:
+        users:
+          # Use: htpasswd -nb user password
+          - jarda:$apr1$wK3yCxUt$HI5JoUkX3lzsgXg9SJO2Y.

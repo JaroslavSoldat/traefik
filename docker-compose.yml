@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  traefik:
+    image: traefik
+    ports:
+      # The HTTP/-s ports
+      - "80:80"
+      - "443:443"
+      # The Web UI (enabled by --api.insecure=true)
+      # - "8080:8080"
+    networks:
+      - dmz
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+    volumes:
+      # Static configuration file
+      - ./traefik.yml:/etc/traefik/traefik.yml
+      # Dynamic configuration file
+      - ./dynamic:/dynamic
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+      # ACME storage
+      - "./letsencrypt:/letsencrypt"
+
+networks:
+  dmz:
+    driver: overlay
+    external: true
