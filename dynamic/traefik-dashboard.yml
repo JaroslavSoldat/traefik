@@ -17,3 +17,4 @@ http:
         users:
           # Use: htpasswd -nb user password
           - jarda:$apr1$wK3yCxUt$HI5JoUkX3lzsgXg9SJO2Y.
+          - linksoft:$apr1$rMONBdS8$0IFDJNW4af0d2INjIsPCD1
