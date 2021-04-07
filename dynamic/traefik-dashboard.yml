@@ -3,7 +3,7 @@ http:
 
     dashboard:
       service: api@internal
-      rule: Host(`127-0-0-1.nip.io`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      rule: Host(`traefik.127-0-0-1.nip.io`)
       entryPoints:
         - websecure
       tls:
