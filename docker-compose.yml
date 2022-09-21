@@ -15,7 +15,7 @@ services:
     deploy:
       mode: global
       restart_policy:
-        condition: none
+        condition: any
     volumes:
       # Static configuration file
       - ./traefik.yml:/etc/traefik/traefik.yml
